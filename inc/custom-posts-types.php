@@ -77,4 +77,29 @@ function afz_metabox_webpart_html(){
     echo '<pre>'. htmlentities($webpart_html) .'</pre>';
 }
 
+
+// ADD COLUMNS TO BACK END LISTING
+
+// Add the custom columns to the wpthemes post type:
+add_filter( 'manage_wpthemes_posts_columns', 'afz_set_custom_wpthemes_columns' );
+function afz_set_custom_wpthemes_columns($columns){
+
+    unset( $columns['date'] ); // Unset and set again to keep it the last
+    $columns['price'] = 'Price';
+
+    return $columns;
+}
+
+// Add the data to the custom columns for the book post type:
+add_action( 'manage_wpthemes_posts_custom_column' , 'afz_custom_wpthemes_columns', 10, 2 );
+function afz_custom_wpthemes_columns( $column, $post_id ){
+
+    switch ( $column ){
+        case 'price' :
+            echo (get_post_meta( $post_id , 'price' , true ) / 100) . '€';
+        break;
+    }
+
+}
+
 ?>
