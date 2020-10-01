@@ -86,6 +86,8 @@ function afz_set_custom_wpthemes_columns($columns){
 
     unset( $columns['date'] ); // Unset and set again to keep it the last
     $columns['price'] = 'Price';
+    $columns['payment_status'] = 'Payment status';
+    $columns['date'] = 'Date';
 
     return $columns;
 }
@@ -97,6 +99,14 @@ function afz_custom_wpthemes_columns( $column, $post_id ){
     switch ( $column ){
         case 'price' :
             echo (get_post_meta( $post_id , 'price' , true ) / 100) . '€';
+        break;
+        case 'payment_status':
+            $paid = get_post_meta( $post_id , 'paid' , true );
+            if(metadata_exists('wpthemes', $post_id , 'payment_id')){
+                echo '<span style="color:green;">'.get_post_meta( $post_id , 'payment_id' , true ).'</span>';
+            }else{
+                echo '<span style="color:red;">Unpaid</span>';
+            }
         break;
     }
 
