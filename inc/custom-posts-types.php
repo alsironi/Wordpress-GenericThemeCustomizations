@@ -102,7 +102,7 @@ function afz_custom_wpthemes_columns( $column, $post_id ){
         break;
         case 'payment_status':
             $paid = get_post_meta( $post_id , 'paid' , true );
-            if(metadata_exists('wpthemes', $post_id , 'payment_id')){
+            if(metadata_exists('post', $post_id , 'payment_id')){
                 echo '<span style="color:green;">'.get_post_meta( $post_id , 'payment_id' , true ).'</span>';
             }else{
                 echo '<span style="color:red;">Unpaid</span>';
