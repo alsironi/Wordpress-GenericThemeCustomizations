@@ -12,17 +12,33 @@ register_post_type( 'wpthemes',
                       ),
     'supports'      => array(
                       'title',
-					  'author'
+                      'author',
+                      'custom-fields'
                       ),
     'public'        => true,
     'has_archive'   => false,
     'rewrite'       => array('slug' => 'wptheme'),
     'menu_position' => 4,
-    'menu_icon'     => 'dashicons-welcome-view-site'
+    'menu_icon'     => 'dashicons-welcome-view-site',
+    'show_in_rest'  => true
     )
 );
 }
 add_action( 'init', 'afz_webs_cpt' );
+
+// WPTHEMES META
+function register_wpthemes_meta_fields(){
+
+    register_meta( 'post', 'price', array(
+        'type' => 'string',
+        'object_subtype' => 'wpthemes',
+        'description' => 'Price',
+        'single' => true,
+        'show_in_rest' => true
+    ));
+
+}
+add_action( 'rest_api_init', 'register_wpthemes_meta_fields');
 
 
 // POST TYPE para THEME PARTS
@@ -35,18 +51,35 @@ function afz_webpart_cpt(){
 						  ),
 		'supports'      => array(
 						  'title',
-						  'author'
+                          'author',
+                          'custom-fields'
                           ),
         'taxonomies'    => array( 'category' ),
 		'public'        => true,
 		'has_archive'   => false,
 		'rewrite'       => array('slug' => 'themepart'),
 		'menu_position' => 4,
-		'menu_icon'     => 'dashicons-admin-page'
+        'menu_icon'     => 'dashicons-admin-page',
+        'show_in_rest'  => true
 		)
 	);
 }
 add_action( 'init', 'afz_webpart_cpt' );
+
+
+// THEMEPARTS META
+function register_themeparts_meta_fields(){
+
+    register_meta( 'post', 'theme_id', array(
+        'type' => 'string',
+        'object_subtype' => 'themeparts',
+        'description' => 'WPTheme Id',
+        'single' => true,
+        'show_in_rest' => true
+    ));
+
+}
+add_action( 'rest_api_init', 'register_themeparts_meta_fields');
 
 
 // META BOXES

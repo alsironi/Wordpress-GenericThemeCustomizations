@@ -17,3 +17,6 @@ require_once plugin_dir_path(__FILE__).'inc/custom-posts-types.php';
 
 // Custom profile fields
 require_once plugin_dir_path(__FILE__).'inc/custom-frontend-profile-fields.php';
+
+// REST endpoints
+require_once plugin_dir_path(__FILE__).'inc/rest-get-themeparts-by-wptheme-id.php';
