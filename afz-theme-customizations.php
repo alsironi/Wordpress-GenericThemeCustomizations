@@ -2,7 +2,7 @@
 /**
 * Plugin Name: Theme customizations
 * Description: Bridge between generic plugins and custom stuff
-* Version: 1.0.3
+* Version: 1.0.4
 * Author: Devlane
 * GitHub Plugin URI: https://github.com/aleonsir/negocioyweb-customizations
 **/

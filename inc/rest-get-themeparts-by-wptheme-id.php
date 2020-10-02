@@ -4,7 +4,7 @@
 add_action('rest_api_init', 'get_themeparts_by_wptheme_id');
 
 function get_themeparts_by_wptheme_id(){
-register_rest_route( 'devlane', 'themeparts/(?P<wptheme_id>\d+)',
+register_rest_route( 'devlane', 'themeparts/by/theme/id/(?P<wptheme_id>\d+)',
     array(
         'methods' => 'GET', 
         'callback' => 'callback_get_themeparts_by_wptheme_id'
