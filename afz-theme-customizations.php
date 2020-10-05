@@ -20,3 +20,4 @@ require_once plugin_dir_path(__FILE__).'inc/custom-frontend-profile-fields.php';
 
 // REST endpoints
 require_once plugin_dir_path(__FILE__).'inc/rest-get-themeparts-by-wptheme-id.php';
+require_once plugin_dir_path(__FILE__).'inc/rest-get-user-by-id.php';

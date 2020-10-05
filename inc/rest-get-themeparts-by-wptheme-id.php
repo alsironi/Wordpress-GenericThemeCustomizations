@@ -1,17 +1,17 @@
 <?php
 
 // Registramos una ruta nueva para la rest api
+function get_themeparts_by_wptheme_id(){
+    register_rest_route( 'devlane', 'get/themeparts/by/wptheme/id/(?P<wptheme_id>\d+)',
+        array(
+            'methods' => 'GET', 
+            'callback' => 'callback_get_themeparts_by_wptheme_id'
+        )
+    );
+}
 add_action('rest_api_init', 'get_themeparts_by_wptheme_id');
 
-function get_themeparts_by_wptheme_id(){
-register_rest_route( 'devlane', 'themeparts/by/theme/id/(?P<wptheme_id>\d+)',
-    array(
-        'methods' => 'GET', 
-        'callback' => 'callback_get_themeparts_by_wptheme_id'
-    )
-);
-}
-
+// Callback
 function callback_get_themeparts_by_wptheme_id($data){
 
     $JSON = array();
@@ -47,6 +47,7 @@ function callback_get_themeparts_by_wptheme_id($data){
 
             // Pillar metadatos
             $themepart_info['themepart_html'] = get_post_meta( get_the_ID(), 'themepart_html', true);
+            $themepart_info['is_included'] = get_post_meta( get_the_ID(), 'is_included', true);
 
             $JSON['themeparts'][] = $themepart_info;
 
