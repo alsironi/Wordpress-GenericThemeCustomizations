@@ -23,4 +23,5 @@ require_once plugin_dir_path(__FILE__).'inc/create-stripe-customer-on-user-regis
 
 // REST endpoints
 require_once plugin_dir_path(__FILE__).'inc/rest-get-themeparts-by-wptheme-id.php';
+require_once plugin_dir_path(__FILE__).'inc/rest-get-transactions-by-user-id.php';
 require_once plugin_dir_path(__FILE__).'inc/rest-get-user-by-id.php';
